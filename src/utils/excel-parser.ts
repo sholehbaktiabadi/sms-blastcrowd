@@ -1,3 +1,4 @@
+import { ExcelField } from 'src/services/sms-broadcast/dto/excel-field.dto';
 import * as xlsx from 'xlsx';
 
 export interface DataDto {
@@ -19,8 +20,11 @@ export class ExcelService {
     const read = xlsx.read(file.buffer);
     const sheetName = read.SheetNames[0];
     const sheetValue = read.Sheets[sheetName];
-    const excelData = xlsx.utils.sheet_to_json(sheetValue);
-    return excelData;
+    try {
+      return xlsx.utils.sheet_to_json(sheetValue);
+    } catch (error) {
+      return error;
+    }
   }
 
   async parseToExcel(data: DataDto[]) {
