@@ -5,7 +5,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { FileUploaded } from 'src/utils/csv-parser';
+import { FileUploaded } from 'src/utils/excel-parser';
 import { SmsBroadcastService } from './sms-broadcast.service';
 
 @Controller('sms-broadcast')

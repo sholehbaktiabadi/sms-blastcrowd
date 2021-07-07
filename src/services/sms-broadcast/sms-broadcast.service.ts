@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ExcelService, FileUploaded } from 'src/utils/csv-parser';
+import { ExcelService, FileUploaded } from 'src/utils/excel-parser';
 
 @Injectable()
 export class SmsBroadcastService {
