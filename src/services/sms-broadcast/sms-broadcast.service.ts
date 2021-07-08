@@ -17,7 +17,7 @@ export class SmsBroadcastService {
       data.push(json[iterator]);
     }
     return data.map((data) => {
-      this.messagerService.SendMessage(data.name, data.phone, data.message);
+      this.messagerService.SendSMS(data.name, data.phone, data.message);
     });
   }
 

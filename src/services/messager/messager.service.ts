@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { Env } from 'src/config/env-loader';
 import { Twilio } from 'twilio';
+import * as nodemailer from 'nodemailer';
+const { TwilioSid, TwilioAuth, TwilioNumber, OUTLOOK_MAIL, OUTLOOK_PASS } =
+  Env();
 
 @Injectable()
 export class MessagerService {
-  SendMessage(name: string, phoneNumber: string, message: string) {
+  SendSMS(name: string, phoneNumber: string, message: string) {
     console.log(name, phoneNumber);
-    const { TwilioSid, TwilioAuth, TwilioNumber } = Env();
+
     const client = new Twilio(TwilioSid, TwilioAuth);
     try {
       return client.messages
@@ -27,5 +30,30 @@ export class MessagerService {
         code: err.code,
       };
     }
+  }
+
+  async SendMail(name: string, to: string, message: string) {
+    let transporter = nodemailer.createTransport({
+      service: 'hotmail',
+      auth: {
+        user: OUTLOOK_MAIL,
+        pass: OUTLOOK_PASS,
+      },
+    });
+
+    return await transporter
+      .sendMail({
+        from: OUTLOOK_MAIL,
+        to: 'sholehbaktiabadi@gmail.com',
+        subject: 'Laratech Id - Promotion Code',
+        text: 'Laratechid Verification : ',
+        html: `<b> haii ${name}, ${message}</b>`,
+      })
+      .then(() => {
+        return { status: 'sent', to };
+      })
+      .catch((err) => {
+        return { status: 'failed', data: err };
+      });
   }
 }
