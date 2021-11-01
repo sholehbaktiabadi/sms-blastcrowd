@@ -16,9 +16,13 @@ export class SmsBroadcastService {
     for (const iterator in json) {
       data.push(json[iterator]);
     }
-    return data.map((data) => {
-      this.messagerService.SendSMS(data.name, data.phone, data.message);
-    });
+    try {
+      return data.map((data) => {
+        this.messagerService.SendSMS(data.name, data.phone, data.message)
+      });
+    } catch (error) {
+      return error
+    }
   }
 
   async jsonToExcel(data: DataDto[]) {
