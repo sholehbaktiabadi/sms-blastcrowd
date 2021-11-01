@@ -1,4 +1,8 @@
 <p align="center">
+  <a>This service is made for marketing for broadcast message promotion to attract customer </a>
+</p>
+
+<p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
