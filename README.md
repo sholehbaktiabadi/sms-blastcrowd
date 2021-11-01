@@ -1,5 +1,5 @@
 <p align="center">
-  <a>This service is made for marketing for broadcast message promotion to attract customer </a>
+  <a>This service is made for marketing for broadcast message promotion to attract customer by bulk send message with xlsx format </a>
 </p>
 
 <p align="center">
